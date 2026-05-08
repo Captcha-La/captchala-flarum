@@ -191,19 +191,11 @@ export default function extendComposer(modulePath: string, action: CaptchalaActi
     const sdkRef = { current: self.captchalaSdk };
     runPopupChallenge(self.captchala, self.captchalaHost, sdkRef)
       .then((token) => {
-        console.log('[captchala-composer] success, calling proceed', token.slice(0, 12));
         self.captchalaSdk = sdkRef.current;
         self.captchalaToken = token;
-        try {
-          proceed();
-          console.log('[captchala-composer] proceed returned');
-        } catch (e) {
-          console.error('[captchala-composer] proceed threw', e);
-          throw e;
-        }
+        proceed();
       })
       .catch((err: Error) => {
-        console.warn('[captchala-composer] flow rejected:', err?.message);
         self.captchalaSdk = sdkRef.current;
         self.loading = false;
         const code = err?.message || '';

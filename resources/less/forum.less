@@ -20,3 +20,16 @@
     }
   }
 }
+
+// Flarum's `.Modal-content { overflow: hidden }` clips anything taller
+// than the modal body — short modals like ForgotPasswordModal end up
+// hiding the captcha trigger bar / float panel. Let the modal grow with
+// its content when our widget is inside.
+.Modal:has(.CaptchalaContainer) {
+  .Modal-content {
+    overflow: visible;
+  }
+  .Modal-body {
+    overflow: visible;
+  }
+}
