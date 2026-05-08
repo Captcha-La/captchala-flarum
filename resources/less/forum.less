@@ -1,0 +1,22 @@
+// CaptchaLa widget container — auth modals & composer.
+// Force the inline trigger bar to fill the form column width so it
+// lines up with input fields above it.
+.CaptchalaContainer {
+  width: 100%;
+  margin: 12px 0;
+
+  .Captchala-widget {
+    width: 100%;
+    min-height: 60px;
+    display: block;
+
+    // SDK injects an inline-block trigger bar; stretch it to match.
+    > div,
+    > iframe,
+    > .captchala-wrapper,
+    > .captchala-trigger {
+      width: 100% !important;
+      box-sizing: border-box;
+    }
+  }
+}

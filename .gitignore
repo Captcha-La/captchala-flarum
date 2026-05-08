@@ -1,0 +1,6 @@
+vendor/
+node_modules/
+js/node_modules/
+js/dist/*.LICENSE.txt
+.phpunit.cache/
+.DS_Store
