@@ -134,9 +134,15 @@ export default class Captchala extends Component<CaptchalaAttrs> {
       const loadCaptchala = (window as any).loadCaptchala;
       if (!loadCaptchala) throw new Error('loadCaptchala missing');
 
-      // Auth modals don't expose a submit-button selector; bind/popup
-      // collapse to float (visible inline trigger) for them.
-      const product = state.product === 'bind' || state.product === 'popup' ? 'float' : state.product;
+      // Force popup mode in auth modals: Flarum's modals (especially
+      // ForgotPassword) have a fixed/short content height, and any inline
+      // widget — float's panel, embed's expanded challenge — gets clipped
+      // or hidden by the modal's overflow. Popup renders only a trigger
+      // bar inside the modal and opens the actual challenge in a fullscreen
+      // overlay above everything, so modal height is irrelevant. Bind is
+      // collapsed to popup too: auth modals don't expose a stable
+      // submit-button selector for the SDK to bind to anyway.
+      const product = 'popup';
 
       loadCaptchala(() => {
         const Captchala = (window as any).Captchala;
