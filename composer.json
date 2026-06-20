@@ -10,7 +10,6 @@
     ],
     "type": "flarum-extension",
     "license": "MIT",
-    "version": "1.0.0",
     "homepage": "https://captcha.la/integrations/flarum",
     "support": {
         "issues": "https://github.com/Captcha-La/captchala-flarum/issues",
